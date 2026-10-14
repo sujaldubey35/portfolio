@@ -25,7 +25,7 @@ function App() {
     <div
       className={
         dark
-          ? "bg-[#090d16] text-white min-h-screen selection:bg-blue-500 selection:text-white"
+          ? "bg-[#030712] text-white min-h-screen selection:bg-blue-500 selection:text-white"
           : "bg-slate-50 text-slate-900 min-h-screen selection:bg-blue-600 selection:text-white"
       }
     >
