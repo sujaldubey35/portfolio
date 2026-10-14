@@ -1,65 +1,60 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Home from "./sections/Home";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
-import Projects from "./sections/Projects";
 import Experience from "./sections/Experience";
+import Education from "./sections/Education";
+import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 
 function App() {
   const [dark, setDark] = useState(true);
-  const [scroll, setScroll] = useState(0);
 
-  // 🔥 Scroll progress
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScroll(progress);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Hardware-accelerated scroll progress via Framer Motion
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
     <div
       className={
         dark
-          ? "bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen"
-          : "bg-white text-black min-h-screen"
+          ? "bg-[#090d16] text-white min-h-screen selection:bg-blue-500 selection:text-white"
+          : "bg-slate-50 text-slate-900 min-h-screen selection:bg-blue-600 selection:text-white"
       }
     >
-      {/* 🔥 Scroll Progress Bar */}
-      <div
-        className="fixed top-0 left-0 h-1 bg-blue-500 z-[100]"
-        style={{ width: `${scroll}%` }}
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 origin-left z-[100]"
+        style={{ scaleX }}
       />
 
       {/* Navbar */}
       <Navbar dark={dark} setDark={setDark} />
 
-      {/* Main Content */}
+      {/* Main Content Sections */}
       <motion.main
-        className="pt-20"
+        className="pt-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
       >
         <Home />
         <About />
         <Skills />
-        <Projects />
         <Experience />
+        <Projects />
+        <Education />
         <Contact />
       </motion.main>
 
-      {/* ✅ Footer (FINAL TOUCH) */}
+      {/* Footer */}
       <Footer />
     </div>
   );
