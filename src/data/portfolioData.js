@@ -135,7 +135,7 @@ export const portfolioData = {
         "Integrated PWA features for mobile-friendly, app-like usability and offline-ready responsiveness.",
       ],
       github: "https://github.com/eurekageeks/First_Job_Job_Potal_Project.git",
-      live: "https://rudraportfolio-rouge.vercel.app/",
+      live: "https://firstjob.a1training.in/",
       liveBadge: "Production / AWS EC2",
     },
     {
