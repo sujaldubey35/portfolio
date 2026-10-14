@@ -13,7 +13,7 @@ const About = () => {
     },
     {
       icon: <FaCloud className="text-indigo-400 text-xl" />,
-      title: "DevOps & Cloud (2nd Year)",
+      title: "DevOps & Cloud",
       desc: "Automated CI/CD pipelines via GitHub Actions, Docker, and AWS EC2 hosting.",
     },
     {

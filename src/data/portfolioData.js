@@ -31,7 +31,7 @@ export const portfolioData = {
       "Results-driven Full Stack Developer & DevOps Engineer with 2 years of hands-on experience building scalable web applications, microservices, and automated cloud pipelines.",
     paragraphs: [
       "With a strong foundation in full-stack web architecture using React.js, JavaScript (ES6+), FastAPI, Node.js, and MongoDB/MySQL, I engineer responsive single-page interfaces and robust backend microservices.",
-      "In my second year of professional experience, I expanded directly into DevOps engineering—architecting continuous integration and continuous deployment (CI/CD) pipelines with GitHub Actions, containerizing services with Docker, and managing reliable cloud hosting on AWS EC2.",
+      "My engineering practice extends into DevOps—architecting continuous integration and continuous deployment (CI/CD) pipelines with GitHub Actions, containerizing services with Docker, and managing reliable cloud hosting on AWS EC2.",
       "Completed my Master of Computer Applications (MCA) at Galgotias University while building AI-powered SaaS platforms and recruitment engines at Eureka Geeks Technology.",
     ],
   },
@@ -39,15 +39,14 @@ export const portfolioData = {
   skills: [
     {
       category: "Frontend & Web",
-      items: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Bootstrap", "Tailwind CSS", "PWA"],
+      items: ["React.js", "JavaScript (ES6+)", "Tailwind CSS", "HTML5", "CSS3", "Bootstrap", "PWA"],
     },
     {
       category: "Backend & Languages",
-      items: ["Python", "JavaScript", "FastAPI", "Node.js", "Express.js", "REST APIs"],
+      items: ["Python", "FastAPI", "Node.js", "Express.js", "JavaScript", "REST APIs"],
     },
     {
       category: "Cloud, DevOps & CI/CD",
-      badge: "2nd Year Specialization",
       items: [
         "AWS EC2",
         "GitHub Actions (CI/CD)",
@@ -79,7 +78,7 @@ export const portfolioData = {
       location: "Gr. Noida, India",
       period: "AUG 2025 – Present",
       type: "Full-Time",
-      highlight: "Second Year: Full Stack Development + DevOps Profile Expansion",
+      highlight: "Full Stack Development & Cloud DevOps Engineering",
       bullets: [
         "Architecting and developing an AI-powered SaaS Job Portal platform targeting freshers, startups, and universities.",
         "Engineered end-to-end CI/CD automation pipelines with GitHub Actions for automated testing and deployment onto AWS EC2 instances.",
@@ -97,7 +96,7 @@ export const portfolioData = {
       location: "Gr. Noida, India",
       period: "NOV 2024 – MAY 2025",
       type: "Internship",
-      highlight: "First Year: Full-Stack Engineering & Microservices Foundation",
+      highlight: "Full-Stack Web Engineering & Microservices",
       bullets: [
         "Developed and maintained responsive web applications using React.js, JavaScript, Bootstrap, HTML5, and CSS3.",
         "Built and integrated RESTful APIs using FastAPI and Node.js to power dynamic frontend workflows.",
