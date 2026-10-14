@@ -6,8 +6,6 @@ import {
   FaMapMarkerAlt,
   FaFileDownload,
   FaArrowRight,
-  FaCode,
-  FaCloud,
 } from "react-icons/fa";
 import profile from "../assets/profile.jpg";
 import { portfolioData } from "../data/portfolioData";
@@ -158,32 +156,6 @@ const Home = () => {
               className="w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-full shadow-2xl"
             />
           </div>
-
-          {/* Floating Badge 1: Top Right */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="absolute -top-2 -right-4 sm:right-0 bg-gray-950/85 backdrop-blur-xl border border-white/15 px-3.5 py-2 rounded-2xl shadow-xl flex items-center gap-2 text-xs font-semibold text-white"
-          >
-            <div className="p-1.5 rounded-lg bg-blue-500/20 text-blue-400">
-              <FaCode size={13} />
-            </div>
-            <span>React & FastAPI</span>
-          </motion.div>
-
-          {/* Floating Badge 2: Bottom Left */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="absolute -bottom-3 -left-4 sm:left-0 bg-gray-950/85 backdrop-blur-xl border border-white/15 px-3.5 py-2 rounded-2xl shadow-xl flex items-center gap-2 text-xs font-semibold text-white"
-          >
-            <div className="p-1.5 rounded-lg bg-orange-500/20 text-orange-400">
-              <FaCloud size={13} />
-            </div>
-            <span>AWS EC2 & DevOps</span>
-          </motion.div>
         </motion.div>
 
       </div>
