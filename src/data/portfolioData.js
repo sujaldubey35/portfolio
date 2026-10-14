@@ -32,7 +32,7 @@ export const portfolioData = {
     paragraphs: [
       "With a strong foundation in full-stack web architecture using React.js, JavaScript (ES6+), FastAPI, Node.js, and MongoDB/MySQL, I engineer responsive single-page interfaces and robust backend microservices.",
       "In my second year of professional experience, I expanded directly into DevOps engineering—architecting continuous integration and continuous deployment (CI/CD) pipelines with GitHub Actions, containerizing services with Docker, and managing reliable cloud hosting on AWS EC2.",
-      "Currently pursuing my Master of Computer Applications (MCA) at Galgotias University while building AI-powered SaaS platforms and recruitment engines at Eureka Geeks Technology.",
+      "Completed my Master of Computer Applications (MCA) at Galgotias University while building AI-powered SaaS platforms and recruitment engines at Eureka Geeks Technology.",
     ],
   },
 
@@ -55,7 +55,6 @@ export const portfolioData = {
         "Vercel",
         "Git",
         "GitHub",
-        "Linux CLI",
       ],
     },
     {
@@ -69,7 +68,6 @@ export const portfolioData = {
         "REST API Architecture",
         "Postman",
         "VS Code",
-        "Agile / Scrum",
       ],
     },
   ],
@@ -90,7 +88,7 @@ export const portfolioData = {
         "Engineering backend microservices and RESTful APIs in Express.js and Node.js with high-throughput application logic.",
         "Designing relational MySQL databases to manage user authentication, candidate tracking, and job postings.",
         "Developing Progressive Web App (PWA) capabilities for enhanced mobile responsiveness and offline caching.",
-        "Collaborating in an Agile workflow utilizing Git and GitHub for version control, code reviews, and sprint planning.",
+        "Collaborating in team workflows utilizing Git and GitHub for version control, code reviews, and sprint planning.",
       ],
     },
     {
@@ -108,6 +106,19 @@ export const portfolioData = {
         "Integrated frontend client apps with backend APIs, handling network state, errors, and edge cases.",
         "Utilized Git and GitHub for branch management, collaborative development, and release workflows.",
         "Debugged application issues and enhanced existing modules to optimize overall performance and UX.",
+      ],
+    },
+    {
+      role: "Project Intern — GoMedicos",
+      company: "Creative Frenzy Private Limited",
+      location: "Noida, India",
+      period: "FEB 2023",
+      type: "Internship",
+      highlight: "Healthcare E-Commerce Taxonomy & Platform Category Architecture",
+      bullets: [
+        "Conducted data collection, analysis, and taxonomy structuring for category building on the GoMedicos healthcare platform.",
+        "Curated, standardized, and refined medical and healthcare product catalogs to enhance search filtering, categorization, and user navigation.",
+        "Demonstrated strong initiative, high-accuracy dataset validation, and timely project delivery exceeding organizational expectations.",
       ],
     },
   ],
@@ -163,8 +174,8 @@ export const portfolioData = {
       degree: "Master of Computer Applications (MCA)",
       institution: "Galgotias University",
       period: "2024 – 2026",
-      status: "Pursuing",
-      highlight: "Specializing in Cloud Computing, Software Architecture & Full Stack Systems",
+      status: "Completed",
+      highlight: "Specialized in Cloud Computing, Software Architecture & Full Stack Systems",
     },
     {
       degree: "Bachelor of Computer Applications (BCA)",
@@ -201,7 +212,6 @@ export const portfolioData = {
     "Docker Containerization",
     "REST API Architecture",
     "Microservices Design",
-    "Agile Teamwork & Adaptability",
   ],
 
   languages: [

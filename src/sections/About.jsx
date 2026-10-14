@@ -19,7 +19,7 @@ const About = () => {
     {
       icon: <FaGraduationCap className="text-purple-400 text-xl" />,
       title: "MCA at Galgotias",
-      desc: "Deepening theoretical & practical foundations in advanced computing systems.",
+      desc: "Completed advanced computing and software systems degree at Galgotias University.",
     },
     {
       icon: <FaCertificate className="text-emerald-400 text-xl" />,
