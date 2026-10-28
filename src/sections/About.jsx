@@ -30,12 +30,12 @@ const capabilities = [
   },
   {
     id: "nlp",
-    title: "Applied NLP & Machine Learning",
-    skills: "Python · LinearSVC · TF-IDF · Sentiment Analysis · Hinglish NLP",
+    title: "Machine Learning & Research",
+    skills: "Python · LinearSVC · TF-IDF · Sentiment Analysis · Microservices",
     depth: 3,
-    proofHeadline: "Proof · Applied NLP & Machine Learning",
+    proofHeadline: "Proof · Machine Learning & Research",
     proofText:
-      "Authored and published research paper in IJSREM Journal (Impact Factor: 8.659) detailing RSR Analyze: an NLP pipeline achieving 88% accuracy and sub-5ms low-latency inference on code-mixed Hinglish e-commerce reviews.",
+      "Authored and published research paper in IJSREM Journal (Impact Factor: 8.659) detailing RSR Analyze: an ML pipeline achieving 88% accuracy and sub-5ms low-latency inference on code-mixed e-commerce reviews.",
     sources: [
       {
         label: "IJSREM Publication Paper",
@@ -92,7 +92,7 @@ export default function About() {
           <strong className="text-paper font-semibold">Eureka Geeks Technology</strong>, building scalable web platforms, applicant tracking SaaS, and automated cloud pipelines on AWS EC2.
         </p>
         <p>
-          I completed my <strong className="text-teal font-medium">Master of Computer Applications (MCA)</strong> at Galgotias University while authoring peer-reviewed applied NLP research in IJSREM (Impact Factor: 8.659). Outside work, I build open-source tools and share reproducible code, metrics, and engineering benchmarks.
+          I completed my <strong className="text-teal font-medium">Master of Computer Applications (MCA)</strong> at Galgotias University while authoring peer-reviewed published research in IJSREM (Impact Factor: 8.659). Outside work, I build open-source tools and share reproducible code, metrics, and engineering benchmarks.
         </p>
       </div>
 

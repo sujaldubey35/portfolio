@@ -1,10 +1,13 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ReactTyped } from "react-typed";
 import profile from "../assets/profile.jpg";
+import DribblingPlayer from "../components/DribblingPlayer";
 import { portfolioData } from "../data/portfolioData";
 
 export default function Home() {
   const { personal } = portfolioData;
+  const [characterMode, setCharacterMode] = useState("player3d"); // 'player3d' | 'photo'
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -68,7 +71,7 @@ export default function Home() {
             </span>
           </motion.h1>
 
-          {/* Visual Role Sequence */}
+          {/* Visual Role Sequence (Applied AI & NLP removed) */}
           <motion.div
             variants={itemVariants}
             className="font-mono text-sm sm:text-base text-paper-dim flex flex-wrap items-center gap-x-2.5 gap-y-1"
@@ -77,11 +80,11 @@ export default function Home() {
             <span className="text-teal" aria-hidden="true">
               ·
             </span>
-            <span className="text-paper font-medium">DevOps Engineer</span>
+            <span className="text-paper font-medium">Full Stack Developer</span>
             <span className="text-teal" aria-hidden="true">
               ·
             </span>
-            <span className="text-paper font-medium">Applied AI &amp; NLP</span>
+            <span className="text-paper font-medium">DevOps Engineer</span>
           </motion.div>
 
           {/* Dynamic Typing Sub-stream */}
@@ -94,8 +97,8 @@ export default function Home() {
               strings={[
                 "AWS EC2 Cloud Infrastructure & Docker",
                 "FastAPI & React Microservices Architecture",
-                "IJSREM Published Sentiment NLP Pipeline",
                 "Automated GitHub Actions CI/CD Workflows",
+                "Scalable Full-Stack Web Applications",
               ]}
               typeSpeed={40}
               backSpeed={25}
@@ -109,7 +112,7 @@ export default function Home() {
             variants={itemVariants}
             className="text-paper-dim text-lg sm:text-xl leading-relaxed max-w-2xl font-light"
           >
-            I engineer scalable web platforms, automated cloud infrastructure on AWS EC2, and published NLP systems.
+            I engineer scalable web platforms, high-throughput microservices, and automated cloud infrastructure on AWS EC2.
           </motion.p>
 
           {/* Action Links */}
@@ -159,52 +162,98 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Right Portrait Column with gentle float animation */}
+        {/* Right Stage: 3D Dribbling Football Player Character (matching mananthakkar.dev) */}
         <div className="lg:col-span-5 flex justify-center lg:justify-end">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
-            transition={{
-              opacity: { duration: 0.8 },
-              scale: { duration: 0.8 },
-              y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-            }}
-            className="relative w-64 sm:w-72 md:w-80"
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative w-80 sm:w-96 flex flex-col items-center"
           >
             {/* Subtle pulsing glow backdrop */}
             <motion.div
               animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.04, 1] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -inset-3 bg-gradient-to-tr from-teal/25 via-transparent to-teal/15 rounded-2xl blur-xl -z-10"
+              className="absolute -inset-4 bg-gradient-to-tr from-teal/20 via-transparent to-teal/15 rounded-3xl blur-2xl -z-10"
               aria-hidden="true"
             />
 
-            {/* Frame matching mananthakkar.dev */}
-            <div className="hud-frame rounded-xl p-2 border border-white/10 bg-ink-2/80 overflow-hidden shadow-2xl transition-all duration-300 hover:border-teal/40">
-              <div className="preview-toolbar !py-1.5 !px-3 !bg-ink text-[10px] font-mono text-paper-dim flex justify-between items-center">
+            {/* Stage Frame */}
+            <div className="hud-frame w-full rounded-xl p-3 border border-white/10 bg-ink-2/80 overflow-hidden shadow-2xl transition-all duration-300 hover:border-teal/40">
+              {/* Header toolbar with mode switch */}
+              <div className="preview-toolbar !py-1.5 !px-3 !bg-ink text-[10px] font-mono text-paper-dim flex justify-between items-center mb-2">
                 <div className="flex gap-1.5">
                   <span />
                   <span />
                   <span />
                 </div>
-                <span className="text-[10px] text-teal/80">rudra.profile.stage</span>
-              </div>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-ink-3 group">
-                <img
-                  src={profile}
-                  alt="Rudra Dubey"
-                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-60" />
-
-                {/* Mode Tag */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono bg-ink/80 backdrop-blur border border-white/10 px-2.5 py-1 rounded">
-                  <span className="text-paper-dim">Status</span>
-                  <span className="text-teal flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal animate-ping" />
-                    Production Ready
-                  </span>
+                {/* Segmented Switch */}
+                <div className="flex items-center gap-1 bg-white/[0.04] p-0.5 rounded border border-white/5">
+                  <button
+                    type="button"
+                    onClick={() => setCharacterMode("player3d")}
+                    className={`px-2 py-0.5 rounded text-[10px] transition-colors cursor-pointer ${
+                      characterMode === "player3d"
+                        ? "bg-teal text-ink font-semibold"
+                        : "text-paper-dim hover:text-paper"
+                    }`}
+                  >
+                    ⚽ 3D Player
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCharacterMode("photo")}
+                    className={`px-2 py-0.5 rounded text-[10px] transition-colors cursor-pointer ${
+                      characterMode === "photo"
+                        ? "bg-teal text-ink font-semibold"
+                        : "text-paper-dim hover:text-paper"
+                    }`}
+                  >
+                    📷 Portrait
+                  </button>
                 </div>
+              </div>
+
+              {/* Stage Body */}
+              <div className="relative min-h-[360px] flex items-center justify-center overflow-hidden rounded-lg bg-ink-3">
+                <AnimatePresence mode="wait">
+                  {characterMode === "player3d" ? (
+                    <motion.div
+                      key="3d-player"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full flex justify-center py-2"
+                    >
+                      <DribblingPlayer />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="portrait-photo"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                      className="relative w-full aspect-[4/5] overflow-hidden rounded-lg group"
+                    >
+                      <img
+                        src={profile}
+                        alt="Rudra Dubey"
+                        className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-60" />
+
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono bg-ink/80 backdrop-blur border border-white/10 px-2.5 py-1 rounded">
+                        <span className="text-paper-dim">Status</span>
+                        <span className="text-teal flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-teal animate-ping" />
+                          Production Ready
+                        </span>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
           </motion.div>

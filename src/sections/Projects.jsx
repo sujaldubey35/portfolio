@@ -23,7 +23,7 @@ export default function Projects() {
         "Production environment hosted on AWS EC2 with reverse proxy, SSL termination, and automated GitHub Actions CI/CD workflows.",
     },
     {
-      category: "02 / Applied NLP Research & Paper",
+      category: "02 / Machine Learning & Scholarly Paper",
       badge: "IJSREM Published (IF: 8.659)",
       toolbarTitle: "RSR Analyze · Sentiment Inference Engine",
       problem:

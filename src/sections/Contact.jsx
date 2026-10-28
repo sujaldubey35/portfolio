@@ -37,7 +37,7 @@ export default function Contact() {
             what's <span className="text-teal animate-pulse">next.</span>
           </h2>
           <p className="contact-intro font-mono text-sm text-paper-dim mt-4">
-            Full Stack Developer · DevOps Engineer · Applied AI
+            Full Stack Developer · DevOps Engineer · Cloud Systems
           </p>
           <div className="rule-teal mt-6 max-w-xs" />
         </motion.div>
