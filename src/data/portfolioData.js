@@ -20,8 +20,8 @@ export const portfolioData = {
     typingRoles: [
       "Full Stack Developer (2+ Yrs)",
       "DevOps & AWS EC2 Engineer",
+      "Published ML Researcher (IJSREM)",
       "FastAPI & React Specialist",
-      "GitHub Actions CI/CD Specialist",
       "Building Scalable Cloud Apps 🚀",
     ],
   },
@@ -32,7 +32,7 @@ export const portfolioData = {
     paragraphs: [
       "With a strong foundation in full-stack web architecture using React.js, JavaScript (ES6+), FastAPI, Node.js, and MongoDB/MySQL, I engineer responsive single-page interfaces and robust backend microservices.",
       "My engineering practice extends into DevOps—architecting continuous integration and continuous deployment (CI/CD) pipelines with GitHub Actions, containerizing services with Docker, and managing reliable cloud hosting on AWS EC2.",
-      "Completed my Master of Computer Applications (MCA) at Galgotias University while building AI-powered SaaS platforms and recruitment engines at Eureka Geeks Technology.",
+      "Completed my Master of Computer Applications (MCA) at Galgotias University while building AI-powered SaaS platforms and published peer-reviewed NLP research in IJSREM.",
     ],
   },
 
@@ -140,17 +140,20 @@ export const portfolioData = {
     },
     {
       title: "Product Review & Sentiment Analysis Web App",
-      subtitle: "Machine Learning Review Insights",
-      desc: "Interactive sentiment analysis web app capturing customer feedback, product reviews, and delivering real-time sentiment classifications.",
-      tech: ["React.js", "JavaScript", "HTML5", "CSS3", "Node.js", "MySQL", "FastAPI", "ML"],
+      subtitle: "Published Research Paper & ML App",
+      desc: "Interactive sentiment analysis platform (RSR Analyze) evaluating customer product reviews in real-time across English, Hindi, and Hinglish.",
+      tech: ["React.js", "Python", "FastAPI", "LinearSVC", "TF-IDF", "Node.js", "MySQL"],
       bullets: [
-        "Developed a web application to capture, analyze, and aggregate customer product feedback and sentiment ratings.",
-        "Designed responsive, modern UI components with interactive feedback summaries.",
-        "Engineered backend API routes in Node.js connected to a MySQL database for feedback analytics and reporting.",
+        "Published research paper in IJSREM Journal (Volume 10, Issue 06, June 2026 | Impact Factor: 8.659 | ISSN: 2582-3930).",
+        "Trained on Amazon review datasets with Hinglish normalization, achieving 88% accuracy with sub-5ms low-latency inference.",
+        "Engineered full-stack microservices architecture with React frontend, Node.js API gateway, and Python/FastAPI ML inference engine.",
       ],
       github: "https://github.com/sujaldubey35/Sentiment_Analysis.git",
       live: null,
-      liveBadge: "Active ML Project",
+      liveBadge: "IJSREM Published (IF: 8.659)",
+      paperUrl: "https://ijsrem.com/download/product-review-sentiment-analysis-using-natural-language-processing-rsr-analyze",
+      certificateUrl: "/publication-certificate.pdf",
+      pdfUrl: "/research-paper.pdf",
     },
     {
       title: "Full Stack Authentication System",
@@ -165,6 +168,23 @@ export const portfolioData = {
       github: "https://github.com/sujaldubey35/Full-Stack-Authentication-System.git",
       live: null,
       liveBadge: "Open Source",
+    },
+  ],
+
+  publications: [
+    {
+      title: "Product Review & Sentiment Analysis Using Natural Language Processing: RSR ANALYZE",
+      journal: "International Journal of Scientific Research in Engineering and Management (IJSREM)",
+      issn: "2582-3930",
+      impactFactor: "8.659",
+      volume: "Volume 10, Issue 06, June 2026",
+      authors: "Rishabh Sharma, Rudra Dubey, Swatik Maurya",
+      mentor: "Dr. Ankit Kumar (Galgotias University)",
+      description:
+        "Peer-reviewed research presenting RSR Analyze: a lightweight, real-time sentiment analysis microservice handling noisy, code-mixed Hinglish and English e-commerce reviews. Demonstrates 88% accuracy with sub-5ms inference using LinearSVC with TF-IDF, outperforming transformer deployment overhead.",
+      paperUrl: "https://ijsrem.com/download/product-review-sentiment-analysis-using-natural-language-processing-rsr-analyze",
+      certificateUrl: "/publication-certificate.pdf",
+      pdfUrl: "/research-paper.pdf",
     },
   ],
 
@@ -198,6 +218,14 @@ export const portfolioData = {
   ],
 
   certifications: [
+    {
+      title: "Certificate of Publication (IJSREM)",
+      issuer: "International Journal of Scientific Research in Engineering and Management",
+      description: "Awarded to Rudra Dubey for scholarly publication: 'Product Review & Sentiment Analysis Using Natural Language Processing: RSR ANALYZE' (ISSN: 2582-3930 | Impact Factor: 8.659 | Vol 10, Issue 6).",
+      certificateUrl: "/publication-certificate.pdf",
+      paperUrl: "https://ijsrem.com/download/product-review-sentiment-analysis-using-natural-language-processing-rsr-analyze",
+      pdfUrl: "/research-paper.pdf",
+    },
     {
       title: "MERN Stack Development",
       issuer: "A1TI, Greater Noida",
