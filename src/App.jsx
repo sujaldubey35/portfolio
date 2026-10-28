@@ -1,6 +1,8 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import Navbar from "./components/Navbar";
 import ChapterRail from "./components/ChapterRail";
+import CursorRing from "./components/CursorRing";
+import NetworkCanvas from "./components/NetworkCanvas";
 import Home from "./sections/Home";
 import About from "./sections/About";
 import Experience from "./sections/Experience";
@@ -21,6 +23,12 @@ export default function App() {
 
   return (
     <div className="bg-ink text-paper min-h-screen relative selection:bg-teal/25 selection:text-teal font-sans">
+      {/* Ambient Data Packet Canvas */}
+      <NetworkCanvas />
+
+      {/* Trailing Cursor Ring */}
+      <CursorRing />
+
       {/* Top Phosphor Hairline Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2px] bg-teal origin-left z-[100]"
@@ -34,7 +42,7 @@ export default function App() {
       <ChapterRail />
 
       {/* Main Editorial Content */}
-      <main id="main">
+      <main id="main" className="relative z-10">
         <Home />
         <About />
         <Experience />

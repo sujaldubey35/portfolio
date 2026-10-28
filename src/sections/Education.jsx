@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { portfolioData } from "../data/portfolioData";
 
 export default function Education() {
@@ -11,7 +12,13 @@ export default function Education() {
     >
       <div className="mx-auto max-w-6xl px-6">
         {/* Section Heading */}
-        <div className="education-heading mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="education-heading mb-16"
+        >
           <p className="data-label">Research &amp; Academics · 05</p>
           <h2
             id="education-title"
@@ -20,15 +27,19 @@ export default function Education() {
             Published research &amp; qualifications.
           </h2>
           <div className="rule-teal mt-6 max-w-xs" />
-        </div>
+        </motion.div>
 
         {/* Featured IJSREM Research Paper */}
         {publications && publications.length > 0 && (
           <div className="mb-16">
             {publications.map((pub) => (
-              <div
+              <motion.div
                 key={pub.title}
-                className="hud-frame rounded-lg border border-white/10 bg-ink-2/80 p-6 sm:p-8 overflow-hidden shadow-2xl"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="hud-frame rounded-lg border border-white/10 bg-ink-2/80 p-6 sm:p-8 overflow-hidden shadow-2xl transition-all duration-300 hover:border-teal/40"
               >
                 <div className="preview-toolbar !-mx-6 sm:!-mx-8 !-mt-6 sm:!-mt-8 mb-6 !px-6 sm:!px-8 flex items-center justify-between">
                   <div className="flex gap-1.5">
@@ -72,7 +83,7 @@ export default function Education() {
                     href={pub.paperUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border border-teal/70 px-3.5 py-1.5 text-teal hover:bg-teal hover:text-ink transition font-medium inline-flex items-center gap-1.5"
+                    className="border border-teal/70 px-3.5 py-1.5 text-teal hover:bg-teal hover:text-ink transition-all font-medium inline-flex items-center gap-1.5 hover:shadow-[0_0_12px_rgba(20,184,166,0.4)]"
                   >
                     <span>Read on IJSREM ↗</span>
                   </a>
@@ -95,7 +106,7 @@ export default function Education() {
                     <span>Publication Certificate (PDF) ↗</span>
                   </a>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}
@@ -110,12 +121,16 @@ export default function Education() {
 
             <div className="space-y-6">
               {education.map((edu, idx) => (
-                <div
+                <motion.div
                   key={idx}
-                  className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/5 pb-4"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/5 pb-4 group"
                 >
                   <div>
-                    <h4 className="font-display text-xl text-paper">
+                    <h4 className="font-display text-xl text-paper group-hover:text-teal transition-colors">
                       {edu.degree}
                     </h4>
                     <p className="font-mono text-xs text-paper-dim mt-0.5">
@@ -133,7 +148,7 @@ export default function Education() {
                     <span className="text-white/20 mx-2">·</span>
                     <span className="text-paper-dim">{edu.period}</span>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -146,9 +161,13 @@ export default function Education() {
               </h3>
               <div className="space-y-4">
                 {certifications.map((cert, idx) => (
-                  <div
+                  <motion.div
                     key={idx}
-                    className="p-4 rounded border border-white/5 bg-ink-2/40"
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    className="p-4 rounded border border-white/5 bg-ink-2/40 hover:border-teal/30 transition-colors"
                   >
                     <h4 className="font-display text-base text-paper">
                       {cert.title}
@@ -159,7 +178,7 @@ export default function Education() {
                     <p className="text-xs text-paper-dim mt-1.5 leading-relaxed">
                       {cert.description}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -172,7 +191,7 @@ export default function Education() {
                 {languages.map((lang) => (
                   <span
                     key={lang.name}
-                    className="px-3 py-1 border border-white/10 rounded bg-ink-2 text-paper-dim"
+                    className="px-3 py-1 border border-white/10 rounded bg-ink-2 text-paper-dim hover:text-paper hover:border-teal/40 transition-colors"
                   >
                     {lang.name} · <span className="text-teal">{lang.level}</span>
                   </span>

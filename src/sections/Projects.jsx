@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { portfolioData } from "../data/portfolioData";
 
 export default function Projects() {
@@ -65,7 +66,13 @@ export default function Projects() {
     >
       <div className="work-layout mx-auto max-w-6xl px-6">
         {/* Section Heading */}
-        <div className="work-heading mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="work-heading mb-16"
+        >
           <p className="data-label">Projects · 04</p>
           <h2
             id="work-title"
@@ -75,16 +82,24 @@ export default function Projects() {
             <br className="hidden sm:block" /> lessons learned.
           </h2>
           <div className="rule-teal mt-6 max-w-xs" />
-        </div>
+        </motion.div>
 
         {/* Project Articles List */}
-        <div className="work-projects space-y-20">
+        <div className="work-projects space-y-24">
           {projects.map((project, index) => {
             const meta = projectMeta[index] || {};
             return (
-              <article
+              <motion.article
                 key={project.title}
-                className="project-feature border-t border-white/5 pt-12 first:border-none first:pt-0"
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.12,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="project-feature border-t border-white/5 pt-12 first:border-none first:pt-0 group"
                 aria-labelledby={`project-title-${index}`}
               >
                 {/* Category & Status */}
@@ -102,7 +117,7 @@ export default function Projects() {
                 {/* Project Title */}
                 <h3
                   id={`project-title-${index}`}
-                  className="font-display text-3xl sm:text-4xl text-paper mt-3"
+                  className="font-display text-3xl sm:text-4xl text-paper mt-3 group-hover:text-teal transition-colors"
                 >
                   {project.title}
                 </h3>
@@ -113,7 +128,7 @@ export default function Projects() {
                 )}
 
                 {/* Preview Frame */}
-                <div className="hud-frame rounded-lg border border-white/10 bg-ink-2/80 mt-6 overflow-hidden">
+                <div className="hud-frame rounded-lg border border-white/10 bg-ink-2/80 mt-6 overflow-hidden transition-all duration-300 group-hover:border-teal/40">
                   <div className="preview-toolbar flex items-center justify-between">
                     <div className="flex gap-1.5">
                       <span />
@@ -160,7 +175,7 @@ export default function Projects() {
                     </div>
                   </dl>
 
-                  {/* Decision Map */}
+                  {/* Decision Map with interactive step hover */}
                   {meta.decisions && (
                     <figure
                       className="decision-map mt-6 p-4 rounded bg-white/[0.02] border border-white/5"
@@ -170,12 +185,12 @@ export default function Projects() {
                         {meta.decisions.map((dec, dIdx) => (
                           <li
                             key={dec.step}
-                            className="flex items-center gap-2"
+                            className="flex items-center gap-2 group/step cursor-default transition-transform hover:scale-105"
                           >
-                            <span className="text-teal font-bold">
+                            <span className="text-teal font-bold px-1.5 py-0.5 rounded bg-teal/10 border border-teal/20 group-hover/step:bg-teal group-hover/step:text-ink transition-colors">
                               {dec.step}
                             </span>
-                            <strong className="text-paper font-normal">
+                            <strong className="text-paper font-normal group-hover/step:text-teal transition-colors">
                               {dec.label}
                             </strong>
                             {dIdx < meta.decisions.length - 1 && (
@@ -203,7 +218,7 @@ export default function Projects() {
                     {project.tech.map((t) => (
                       <li
                         key={t}
-                        className="px-2.5 py-1 bg-white/[0.03] border border-white/10 rounded text-paper-dim"
+                        className="px-2.5 py-1 bg-white/[0.03] border border-white/10 rounded text-paper-dim hover:text-teal hover:border-teal/30 transition-colors"
                       >
                         {t}
                       </li>
@@ -218,7 +233,7 @@ export default function Projects() {
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="border border-teal/70 px-3.5 py-1.5 text-teal hover:bg-teal hover:text-ink transition font-medium inline-flex items-center gap-1.5"
+                          className="border border-teal/70 px-3.5 py-1.5 text-teal hover:bg-teal hover:text-ink transition-all font-medium inline-flex items-center gap-1.5 hover:shadow-[0_0_12px_rgba(20,184,166,0.4)]"
                         >
                           <span>Live Platform</span>
                           <span aria-hidden="true">↗</span>
@@ -230,7 +245,7 @@ export default function Projects() {
                           href={project.paperUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="border border-teal/70 px-3.5 py-1.5 text-teal hover:bg-teal hover:text-ink transition font-medium inline-flex items-center gap-1.5"
+                          className="border border-teal/70 px-3.5 py-1.5 text-teal hover:bg-teal hover:text-ink transition-all font-medium inline-flex items-center gap-1.5 hover:shadow-[0_0_12px_rgba(20,184,166,0.4)]"
                         >
                           <span>Read Paper</span>
                           <span aria-hidden="true">↗</span>
@@ -275,7 +290,7 @@ export default function Projects() {
                     </div>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             );
           })}
         </div>

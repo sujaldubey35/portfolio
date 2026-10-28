@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { portfolioData } from "../data/portfolioData";
 
 export default function Experience() {
@@ -11,7 +12,13 @@ export default function Experience() {
     >
       <div className="experience-layout mx-auto max-w-6xl px-6 py-24">
         {/* Section Heading */}
-        <div className="experience-heading mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="experience-heading mb-16"
+        >
           <p className="data-label">Experience · 03</p>
           <h2
             id="experience-title"
@@ -20,15 +27,23 @@ export default function Experience() {
             From interfaces to infrastructure.
           </h2>
           <div className="rule-teal mt-6 max-w-xs" />
-        </div>
+        </motion.div>
 
         {/* Roles List */}
         <div className="experience-roles max-w-4xl">
           <ol className="role-list space-y-14" role="list">
             {experiences.map((exp, index) => (
-              <li
+              <motion.li
                 key={exp.company + exp.role + index}
-                className="career-role group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="career-role group transition-transform duration-300 hover:translate-x-1"
                 aria-labelledby={`role-${index}`}
               >
                 {/* Role Header */}
@@ -60,17 +75,25 @@ export default function Experience() {
                 <ul className="role-impact mt-5 space-y-2.5 text-paper-dim leading-relaxed text-sm sm:text-base" role="list">
                   {exp.bullets.map((bullet, bIdx) => (
                     <li key={bIdx} className="flex items-start gap-2.5">
-                      <span className="text-teal font-mono select-none text-xs mt-1">▸</span>
+                      <span className="text-teal font-mono select-none text-xs mt-1 transition-transform group-hover:translate-x-0.5">
+                        ▸
+                      </span>
                       <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>
-              </li>
+              </motion.li>
             ))}
           </ol>
 
           {/* Education Line at Bottom */}
-          <div className="career-education mt-16 pt-8 border-t border-white/5 font-mono text-xs sm:text-sm text-paper-dim flex flex-wrap items-center gap-2">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="career-education mt-16 pt-8 border-t border-white/5 font-mono text-xs sm:text-sm text-paper-dim flex flex-wrap items-center gap-2"
+          >
             <span className="text-teal font-semibold">
               Master of Computer Applications (MCA)
             </span>
@@ -78,7 +101,7 @@ export default function Experience() {
             <span>Galgotias University</span>
             <span className="text-white/20">·</span>
             <span className="text-paper">Completed</span>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

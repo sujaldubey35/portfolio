@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const capabilities = [
   {
@@ -63,9 +64,13 @@ export default function About() {
   const activeCapability = capabilities[activeTab];
 
   return (
-    <section
+    <motion.section
       id="about"
       aria-labelledby="about-title"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="about-section mx-auto max-w-6xl px-6 py-24 border-t border-white/5"
     >
       {/* Section Header */}
@@ -135,10 +140,10 @@ export default function About() {
                         {[1, 2, 3].map((box) => (
                           <span
                             key={box}
-                            className={`h-2 w-3.5 border transition-all ${
+                            className={`h-2 w-3.5 border transition-all duration-300 ${
                               box <= cap.depth
                                 ? isSelected
-                                  ? "border-teal bg-teal"
+                                  ? "border-teal bg-teal shadow-[0_0_8px_rgba(20,184,166,0.5)]"
                                   : "border-teal-deep bg-teal-deep"
                                 : "border-white/15 bg-transparent"
                             }`}
@@ -152,7 +157,7 @@ export default function About() {
             </ul>
           </div>
 
-          {/* Right Column: Proof HUD Frame */}
+          {/* Right Column: Proof HUD Frame with AnimatePresence */}
           <div className="lg:col-span-6 flex">
             <div
               id="capability-proof"
@@ -160,16 +165,24 @@ export default function About() {
               aria-live="polite"
               aria-atomic="true"
             >
-              <div>
-                <div className="data-label text-teal flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-teal" />
-                  <span>{activeCapability.proofHeadline}</span>
-                </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeCapability.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.28, ease: "easeOut" }}
+                >
+                  <div className="data-label text-teal flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
+                    <span>{activeCapability.proofHeadline}</span>
+                  </div>
 
-                <div className="mt-4 text-base sm:text-lg leading-relaxed text-paper">
-                  <p>{activeCapability.proofText}</p>
-                </div>
-              </div>
+                  <div className="mt-4 text-base sm:text-lg leading-relaxed text-paper">
+                    <p>{activeCapability.proofText}</p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
 
               <div className="mt-8 pt-6 border-t border-white/5">
                 <div className="flex flex-wrap gap-4 font-mono text-xs tracking-wider">
@@ -195,6 +208,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
