@@ -1,136 +1,130 @@
-import { motion } from "framer-motion";
-import { FaPhone, FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt, FaGlobe, FaArrowRight } from "react-icons/fa";
+import { useState } from "react";
 import { portfolioData } from "../data/portfolioData";
 
-const Contact = () => {
+export default function Contact() {
   const { personal } = portfolioData;
+  const [copied, setCopied] = useState(false);
 
-  const contactMethods = [
-    {
-      icon: <FaEnvelope className="text-blue-400" size={20} />,
-      label: "Direct Email",
-      value: personal.email,
-      href: personal.emailUrl,
-      action: "Send Email",
-      glow: "hover:border-blue-500/50",
-    },
-    {
-      icon: <FaPhone className="text-emerald-400" size={20} />,
-      label: "Phone / WhatsApp",
-      value: personal.phone,
-      href: personal.phoneUrl,
-      action: "Call",
-      glow: "hover:border-emerald-500/50",
-    },
-    {
-      icon: <FaLinkedin className="text-indigo-400" size={20} />,
-      label: "LinkedIn Profile",
-      value: "rudra-dubey",
-      href: personal.linkedin,
-      action: "Connect",
-      external: true,
-      glow: "hover:border-indigo-500/50",
-    },
-    {
-      icon: <FaGithub className="text-gray-200" size={20} />,
-      label: "GitHub Profile",
-      value: "sujaldubey35",
-      href: personal.github,
-      action: "Follow",
-      external: true,
-      glow: "hover:border-white/30",
-    },
-    {
-      icon: <FaGlobe className="text-cyan-400" size={20} />,
-      label: "Live Portfolio",
-      value: "rudraportfolio-rouge.vercel.app",
-      href: personal.portfolioUrl,
-      action: "Visit",
-      external: true,
-      glow: "hover:border-cyan-500/50",
-    },
-    {
-      icon: <FaMapMarkerAlt className="text-rose-400" size={20} />,
-      label: "Location",
-      value: personal.location,
-      action: "Based in India",
-      glow: "hover:border-rose-500/50",
-    },
-  ];
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(personal.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-    <section id="contact" className="py-24 px-6 max-w-7xl mx-auto">
-      {/* Title */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <span className="text-xs uppercase tracking-widest text-blue-400 font-semibold px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20">
-          Get In Touch
-        </span>
-        <h2 className="text-3xl sm:text-5xl font-extrabold mt-3 text-white">
-          Let's Build Something Exceptional
-        </h2>
-        <div className="w-20 h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
-        <p className="text-gray-400 text-sm sm:text-base mt-4 max-w-xl mx-auto leading-relaxed">
-          Open to full-time engineering roles, DevOps contracts, and scalable web platform collaborations.
-        </p>
-      </motion.div>
+    <section
+      id="contact"
+      aria-labelledby="contact-title"
+      className="contact-section border-t border-white/5 py-24"
+    >
+      <div className="contact-layout mx-auto max-w-6xl px-6">
+        {/* Contact Heading */}
+        <div className="contact-heading mb-16">
+          <p className="data-label">Contact · 06</p>
+          <h2
+            id="contact-title"
+            className="font-display text-4xl sm:text-6xl text-paper leading-tight mt-3"
+          >
+            Let's build
+            <br />
+            what's <span className="text-teal">next.</span>
+          </h2>
+          <p className="contact-intro font-mono text-sm text-paper-dim mt-4">
+            Full Stack Developer · DevOps Engineer · Applied AI
+          </p>
+          <div className="rule-teal mt-6 max-w-xs" />
+        </div>
 
-      {/* Contact Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {contactMethods.map((method, index) => {
-          const CardContent = (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              viewport={{ once: true }}
-              className={`p-6 rounded-3xl bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 ${method.glow} transition-all duration-300 flex items-center justify-between gap-4 group h-full hover:shadow-xl hover:-translate-y-1`}
+        {/* Action Panel */}
+        <div className="contact-actions max-w-2xl space-y-8">
+          <p className="contact-action-label font-mono text-xs uppercase tracking-[0.14em] text-paper-faint">
+            Start a conversation
+          </p>
+
+          {/* Email Row with Copy Button */}
+          <div className="contact-email-row flex flex-wrap items-center gap-4">
+            <a
+              className="contact-email font-mono text-xl sm:text-3xl text-paper hover:text-teal transition-colors border-b border-teal/40 pb-1"
+              href={`mailto:${personal.email}`}
             >
-              <div className="flex items-center gap-4">
-                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 group-hover:scale-110 transition duration-300">
-                  {method.icon}
-                </div>
-                <div>
-                  <p className="text-xs text-gray-400 font-medium">{method.label}</p>
-                  <p className="text-sm font-semibold text-white mt-1 break-all">
-                    {method.value}
-                  </p>
-                </div>
-              </div>
+              <span>{personal.email}</span>
+              <span aria-hidden="true" className="text-teal ml-1">
+                ↗
+              </span>
+            </a>
 
-              {method.href && (
-                <span className="text-xs font-semibold text-blue-400 group-hover:translate-x-1 transition shrink-0 flex items-center gap-1">
-                  <span>{method.action}</span>
-                  <FaArrowRight size={10} />
-                </span>
-              )}
-            </motion.div>
-          );
-
-          if (method.href) {
-            return (
-              <a
-                key={method.label}
-                href={method.href}
-                target={method.external ? "_blank" : undefined}
-                rel={method.external ? "noopener noreferrer" : undefined}
-                className="block"
+            <button
+              type="button"
+              onClick={handleCopyEmail}
+              aria-label={`Copy email address ${personal.email}`}
+              className="contact-copy font-mono text-xs border border-white/20 hover:border-teal px-3.5 py-2 rounded text-paper hover:text-teal transition-all flex items-center gap-2 cursor-pointer bg-ink-2/60"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                aria-hidden="true"
               >
-                {CardContent}
-              </a>
-            );
-          }
+                <path d="M8 8h12v12H8zM4 16V4h12v4" />
+              </svg>
+              <span>{copied ? "Copied!" : "Copy"}</span>
+            </button>
+          </div>
 
-          return <div key={method.label}>{CardContent}</div>;
-        })}
+          {/* Channels List */}
+          <div className="contact-channels flex flex-wrap items-center gap-6 font-mono text-xs sm:text-sm tracking-wide pt-4">
+            <a
+              href={personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-paper-dim hover:text-teal transition-colors inline-flex items-center gap-1"
+            >
+              <span>LinkedIn</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href={personal.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-paper-dim hover:text-teal transition-colors inline-flex items-center gap-1"
+            >
+              <span>GitHub</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-paper-dim hover:text-teal transition-colors inline-flex items-center gap-1"
+            >
+              <span>Résumé</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href={personal.phoneUrl}
+              className="text-paper-dim hover:text-teal transition-colors inline-flex items-center gap-1"
+            >
+              <span>{personal.phone}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          {/* Location & Status Signature */}
+          <p className="contact-signature font-mono text-xs text-paper-faint pt-8 border-t border-white/5 flex items-center gap-2">
+            <span>Rudra Dubey</span>
+            <span aria-hidden="true" className="text-white/20">/</span>
+            <span>{personal.location}</span>
+            <span aria-hidden="true" className="text-white/20">/</span>
+            <span className="text-teal">Available for hire</span>
+          </p>
+        </div>
       </div>
     </section>
   );
-};
-
-export default Contact;
+}

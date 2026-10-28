@@ -1,117 +1,200 @@
-import { motion } from "framer-motion";
-import { FaGraduationCap, FaServer, FaCloud, FaCertificate, FaCheck } from "react-icons/fa";
-import { portfolioData } from "../data/portfolioData";
+import { useState } from "react";
 
-const About = () => {
-  const { summary, strengths } = portfolioData;
+const capabilities = [
+  {
+    id: "devops",
+    title: "Cloud & DevOps",
+    skills: "AWS EC2 · GitHub Actions · Docker · CI/CD · Reverse Proxies",
+    depth: 3,
+    proofHeadline: "Proof · Cloud & DevOps",
+    proofText:
+      "Automated end-to-end CI/CD deployment pipelines with GitHub Actions onto AWS EC2 instances at Eureka Geeks Technology, reducing deployment turnaround times by 65% and eliminating manual server configuration.",
+    sources: [
+      { label: "Resume · Cloud & DevOps Work", url: "/resume.pdf" },
+      { label: "FirstJob AWS EC2 Production", url: "https://firstjob.a1training.in/" },
+    ],
+  },
+  {
+    id: "fullstack",
+    title: "Full-Stack Systems",
+    skills: "React.js · FastAPI · Node.js · Express.js · REST APIs",
+    depth: 3,
+    proofHeadline: "Proof · Full-Stack Systems",
+    proofText:
+      "Engineered scalable single-page interfaces with React.js and high-throughput backend microservices using FastAPI and Node.js for the FirstJob recruitment SaaS platform, handling dynamic applicant matching.",
+    sources: [
+      { label: "FirstJob Platform", url: "https://firstjob.a1training.in/" },
+      { label: "Full Stack Auth System", url: "https://github.com/sujaldubey35/Full-Stack-Authentication-System.git" },
+    ],
+  },
+  {
+    id: "nlp",
+    title: "Applied NLP & Machine Learning",
+    skills: "Python · LinearSVC · TF-IDF · Sentiment Analysis · Hinglish NLP",
+    depth: 3,
+    proofHeadline: "Proof · Applied NLP & Machine Learning",
+    proofText:
+      "Authored and published research paper in IJSREM Journal (Impact Factor: 8.659) detailing RSR Analyze: an NLP pipeline achieving 88% accuracy and sub-5ms low-latency inference on code-mixed Hinglish e-commerce reviews.",
+    sources: [
+      {
+        label: "IJSREM Publication Paper",
+        url: "https://ijsrem.com/download/product-review-sentiment-analysis-using-natural-language-processing-rsr-analyze",
+      },
+      { label: "Certificate of Publication", url: "/publication-certificate.pdf" },
+    ],
+  },
+  {
+    id: "data",
+    title: "Database & Architecture",
+    skills: "MongoDB · MySQL · Schema Design · Query Optimization · PWAs",
+    depth: 3,
+    proofHeadline: "Proof · Database & Architecture",
+    proofText:
+      "Designed normalized relational MySQL schemas and high-throughput MongoDB document models for candidate tracking, authorization, and review pipelines with zero data leakage.",
+    sources: [
+      { label: "Resume · Architecture Experience", url: "/resume.pdf" },
+      { label: "FirstJob Repository", url: "https://github.com/eurekageeks/First_Job_Job_Potal_Project.git" },
+    ],
+  },
+];
 
-  const highlights = [
-    {
-      icon: <FaServer className="text-cyan-400 text-xl" />,
-      title: "Full Stack Architecture",
-      desc: "Microservices & REST APIs with React.js, FastAPI, Node.js & MongoDB/MySQL.",
-      glow: "hover:border-cyan-500/40",
-    },
-    {
-      icon: <FaCloud className="text-orange-400 text-xl" />,
-      title: "DevOps & Cloud Engineering",
-      desc: "Automated CI/CD pipelines via GitHub Actions, Docker, and AWS EC2 hosting.",
-      glow: "hover:border-orange-500/40",
-    },
-    {
-      icon: <FaGraduationCap className="text-purple-400 text-xl" />,
-      title: "MCA Graduate",
-      desc: "Completed advanced computing and software systems degree at Galgotias University.",
-      glow: "hover:border-purple-500/40",
-    },
-    {
-      icon: <FaCertificate className="text-emerald-400 text-xl" />,
-      title: "Certified MERN Developer",
-      desc: "Hands-on engineering certification from A1TI, Greater Noida.",
-      glow: "hover:border-emerald-500/40",
-    },
-  ];
+export default function About() {
+  const [activeTab, setActiveTab] = useState(0);
+  const activeCapability = capabilities[activeTab];
 
   return (
-    <section id="about" className="py-24 px-6 max-w-7xl mx-auto">
-      {/* Section Title */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <span className="text-xs uppercase tracking-widest text-blue-400 font-semibold px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20">
-          Background & Engineering
-        </span>
-        <h2 className="text-3xl sm:text-5xl font-extrabold mt-3 text-white">
-          About Me
+    <section
+      id="about"
+      aria-labelledby="about-title"
+      className="about-section mx-auto max-w-6xl px-6 py-24 border-t border-white/5"
+    >
+      {/* Section Header */}
+      <div className="about-heading mb-12">
+        <p className="data-label">About · 02</p>
+        <h2
+          id="about-title"
+          className="mt-3 max-w-3xl font-display text-4xl sm:text-5xl leading-tight text-paper"
+        >
+          Production systems. Measured engineering.
         </h2>
-        <div className="w-20 h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
-      </motion.div>
+        <div className="rule-teal mt-6 max-w-xs" />
+      </div>
 
-      {/* Main Narrative Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        viewport={{ once: true }}
-        className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-white/[0.05] via-white/[0.02] to-transparent p-7 sm:p-10 border border-white/10 shadow-2xl backdrop-blur-xl"
-      >
-        {/* Subtle top sheen */}
-        <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50" />
+      {/* Narrative Bio */}
+      <div className="about-copy mb-16 max-w-3xl space-y-4 text-paper-dim text-base sm:text-lg leading-relaxed font-light">
+        <p>
+          I’m a Full Stack Developer &amp; DevOps Engineer at{" "}
+          <strong className="text-paper font-semibold">Eureka Geeks Technology</strong>, building scalable web platforms, applicant tracking SaaS, and automated cloud pipelines on AWS EC2.
+        </p>
+        <p>
+          I completed my <strong className="text-teal font-medium">Master of Computer Applications (MCA)</strong> at Galgotias University while authoring peer-reviewed applied NLP research in IJSREM (Impact Factor: 8.659). Outside work, I build open-source tools and share reproducible code, metrics, and engineering benchmarks.
+        </p>
+      </div>
 
-        <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-white via-blue-100 to-blue-300 bg-clip-text text-transparent mb-5 leading-snug">
-          {summary.headline}
-        </h3>
+      {/* Interactive Capability Map & Proof HUD */}
+      <div id="about-capabilities" className="mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Left Column: Capability List */}
+          <div className="lg:col-span-6">
+            <ul
+              className="divide-y divide-white/5 border-y border-white/5"
+              aria-label="Capability domains"
+            >
+              {capabilities.map((cap, index) => {
+                const isSelected = activeTab === index;
+                return (
+                  <li key={cap.id}>
+                    <button
+                      type="button"
+                      onClick={() => setActiveTab(index)}
+                      aria-pressed={isSelected}
+                      className={`group flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition-all duration-200 cursor-pointer ${
+                        isSelected
+                          ? "bg-white/[0.04] border-l-2 border-teal"
+                          : "hover:bg-white/[0.02]"
+                      }`}
+                    >
+                      <div className="flex-1">
+                        <span
+                          className={`block font-display text-lg transition-colors ${
+                            isSelected ? "text-teal font-medium" : "text-paper group-hover:text-teal"
+                          }`}
+                        >
+                          {cap.title}
+                        </span>
+                        <span className="mt-1 block font-mono text-xs leading-relaxed tracking-[0.08em] text-paper-dim">
+                          {cap.skills}
+                        </span>
+                      </div>
 
-        <div className="space-y-4 text-gray-300 text-base sm:text-lg leading-relaxed">
-          {summary.paragraphs.map((p, idx) => (
-            <p key={idx}>{p}</p>
-          ))}
-        </div>
+                      {/* 3 of 3 Depth Meter */}
+                      <div
+                        aria-label={`Depth: ${cap.depth} of 3`}
+                        className="flex shrink-0 gap-1.5"
+                      >
+                        {[1, 2, 3].map((box) => (
+                          <span
+                            key={box}
+                            className={`h-2 w-3.5 border transition-all ${
+                              box <= cap.depth
+                                ? isSelected
+                                  ? "border-teal bg-teal"
+                                  : "border-teal-deep bg-teal-deep"
+                                : "border-white/15 bg-transparent"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
-        {/* Strengths Badges */}
-        <div className="mt-8 pt-6 border-t border-white/10">
-          <h4 className="text-xs uppercase tracking-wider text-gray-400 font-semibold mb-3.5">
-            Core Competencies & Strengths
-          </h4>
-          <div className="flex flex-wrap gap-2.5">
-            {strengths.map((str) => (
-              <span
-                key={str}
-                className="flex items-center gap-2 text-xs px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/10 text-gray-200 hover:text-white hover:border-blue-500/40 hover:bg-white/[0.08] transition"
-              >
-                <FaCheck className="text-blue-400 text-[10px]" />
-                <span className="font-medium">{str}</span>
-              </span>
-            ))}
+          {/* Right Column: Proof HUD Frame */}
+          <div className="lg:col-span-6 flex">
+            <div
+              id="capability-proof"
+              className="hud-frame flex flex-col justify-between w-full border border-white/10 bg-ink-2/70 p-6 sm:p-8"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <div>
+                <div className="data-label text-teal flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal" />
+                  <span>{activeCapability.proofHeadline}</span>
+                </div>
+
+                <div className="mt-4 text-base sm:text-lg leading-relaxed text-paper">
+                  <p>{activeCapability.proofText}</p>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/5">
+                <div className="flex flex-wrap gap-4 font-mono text-xs tracking-wider">
+                  {activeCapability.sources.map((src) => (
+                    <a
+                      key={src.label}
+                      href={src.url}
+                      target={src.url.startsWith("http") || src.url.endsWith(".pdf") ? "_blank" : undefined}
+                      rel={src.url.startsWith("http") || src.url.endsWith(".pdf") ? "noopener noreferrer" : undefined}
+                      className="text-paper-dim hover:text-teal transition-colors inline-flex items-center gap-1 border-b border-white/10 pb-0.5 hover:border-teal"
+                    >
+                      <span>{src.label}</span>
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  ))}
+                </div>
+
+                <p className="mt-4 font-mono text-[11px] tracking-[0.1em] text-paper-faint">
+                  Depth reflects hands-on production and academic experience in each area.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </motion.div>
-
-      {/* 4 Feature Highlights Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
-        {highlights.map((item, index) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className={`p-6 rounded-3xl bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 ${item.glow} transition duration-300 hover:-translate-y-1 hover:shadow-xl group`}
-          >
-            <div className="p-3.5 bg-white/5 border border-white/10 rounded-2xl w-fit mb-4 group-hover:scale-110 transition duration-300">
-              {item.icon}
-            </div>
-            <h4 className="text-base font-bold text-white mb-1.5">{item.title}</h4>
-            <p className="text-gray-400 text-xs leading-relaxed">{item.desc}</p>
-          </motion.div>
-        ))}
       </div>
     </section>
   );
-};
-
-export default About;
+}
