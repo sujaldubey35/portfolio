@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaGraduationCap,
@@ -9,31 +8,11 @@ import {
   FaAward,
   FaFilePdf,
   FaExternalLinkAlt,
-  FaQuoteRight,
 } from "react-icons/fa";
 import { portfolioData } from "../data/portfolioData";
 
-const bibtexCitation = `@article{dubey2026rsr,
-  title={Product Review & Sentiment Analysis Using Natural Language Processing: RSR ANALYZE},
-  author={Rudra Dubey and Rishabh Sharma and Swatik Maurya},
-  journal={International Journal of Scientific Research in Engineering and Management (IJSREM)},
-  volume={10},
-  number={6},
-  year={2026},
-  issn={2582-3930}
-}`;
-
 const Education = () => {
   const { education, certifications, languages, publications } = portfolioData;
-  const [copiedBibtex, setCopiedBibtex] = useState(false);
-
-  const handleCopyBibtex = () => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(bibtexCitation);
-      setCopiedBibtex(true);
-      setTimeout(() => setCopiedBibtex(false), 2500);
-    }
-  };
 
   return (
     <section id="education" className="py-24 px-6 max-w-7xl mx-auto">
@@ -45,13 +24,13 @@ const Education = () => {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <span className="text-xs uppercase tracking-widest text-cyan-400 font-mono font-semibold px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20">
-          [ACADEMICS & RESEARCH DOSSIER]
+        <span className="text-xs uppercase tracking-widest text-blue-400 font-semibold px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+          Academics, Research & Credentials
         </span>
-        <h2 className="text-3xl sm:text-5xl font-extrabold mt-3 text-white tracking-tight">
+        <h2 className="text-3xl sm:text-5xl font-extrabold mt-3 text-white">
           Education & Research
         </h2>
-        <div className="w-20 h-1.5 bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+        <div className="w-20 h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
       </motion.div>
 
       {/* FEATURED RESEARCH PUBLICATION CARD */}
@@ -61,17 +40,17 @@ const Education = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="hud-corner group relative overflow-hidden rounded-3xl bg-gradient-to-b from-cyan-500/[0.08] via-white/[0.02] to-transparent p-7 sm:p-9 border border-cyan-500/30 hover:border-cyan-500/60 transition-all duration-300 shadow-2xl shadow-cyan-500/5 mb-12"
+          className="group relative overflow-hidden rounded-3xl bg-gradient-to-b from-blue-500/[0.08] via-white/[0.02] to-transparent p-7 sm:p-9 border border-blue-500/30 hover:border-blue-500/60 transition-all duration-300 shadow-2xl shadow-blue-500/5 mb-12"
         >
           {/* Top glowing line */}
-          <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
 
           {publications.map((pub) => (
             <div key={pub.title}>
               {/* Header Badge */}
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-4 font-mono">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">
-                  <FaBookOpen size={12} className="text-cyan-400" />
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-300 text-xs font-semibold">
+                  <FaBookOpen size={12} className="text-blue-400" />
                   <span>Peer-Reviewed Journal Publication</span>
                   <span className="text-gray-500">•</span>
                   <span>Impact Factor: {pub.impactFactor}</span>
@@ -83,28 +62,28 @@ const Education = () => {
               </div>
 
               {/* Title & Journal */}
-              <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition leading-snug">
+              <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-300 transition leading-snug">
                 {pub.title}
               </h3>
-              <p className="text-sm text-cyan-400 font-semibold mt-1.5">
+              <p className="text-sm text-blue-400 font-semibold mt-1.5">
                 {pub.journal}
               </p>
-              <p className="text-xs text-gray-400 mt-1 font-mono">
+              <p className="text-xs text-gray-400 mt-1">
                 <span className="font-medium text-gray-300">Authors:</span> {pub.authors} • <span className="font-medium text-gray-300">Mentor:</span> {pub.mentor} • <span className="font-medium text-gray-300">ISSN:</span> {pub.issn}
               </p>
 
               {/* Abstract */}
-              <p className="text-gray-300 text-sm mt-4 leading-relaxed max-w-5xl font-sans">
+              <p className="text-gray-300 text-sm mt-4 leading-relaxed max-w-5xl">
                 {pub.description}
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 mt-6 pt-5 border-t border-white/10 font-sans">
+              <div className="flex flex-wrap items-center gap-3 mt-6 pt-5 border-t border-white/10">
                 <a
                   href={pub.paperUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs font-semibold bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white px-4 py-2.5 rounded-xl transition hover:scale-105 shadow-md shadow-cyan-500/25"
+                  className="flex items-center gap-2 text-xs font-semibold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-4 py-2.5 rounded-xl transition hover:scale-105 shadow-md shadow-blue-500/25"
                 >
                   <FaExternalLinkAlt size={11} />
                   <span>Read on IJSREM Journal</span>
@@ -128,15 +107,6 @@ const Education = () => {
                   <FaFilePdf size={13} className="text-purple-400" />
                   <span>Download Paper (PDF)</span>
                 </a>
-
-                <button
-                  type="button"
-                  onClick={handleCopyBibtex}
-                  className="flex items-center gap-2 text-xs font-semibold bg-cyan-950/40 hover:bg-cyan-900/60 border border-cyan-500/30 text-cyan-300 px-4 py-2.5 rounded-xl transition hover:scale-105 font-mono"
-                >
-                  <FaQuoteRight size={11} className="text-cyan-400" />
-                  <span>{copiedBibtex ? "Copied BibTeX! ✓" : "Copy BibTeX"}</span>
-                </button>
               </div>
             </div>
           ))}
@@ -149,7 +119,7 @@ const Education = () => {
         {/* Academic Qualifications */}
         <div className="lg:col-span-2 space-y-4">
           <h3 className="text-xl font-bold text-white flex items-center gap-2.5 mb-5">
-            <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
               <FaGraduationCap size={18} />
             </div>
             <span>Academic Qualifications</span>
@@ -163,11 +133,11 @@ const Education = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="hud-corner group relative overflow-hidden rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent p-6 border border-white/10 hover:border-cyan-500/40 transition duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent p-6 border border-white/10 hover:border-blue-500/40 transition duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
               >
                 <div>
                   <div className="flex flex-wrap items-center gap-2.5">
-                    <h4 className="text-base font-bold text-white group-hover:text-cyan-300 transition">
+                    <h4 className="text-base font-bold text-white group-hover:text-blue-300 transition">
                       {edu.degree}
                     </h4>
                     {edu.status && (
@@ -177,7 +147,7 @@ const Education = () => {
                       </span>
                     )}
                   </div>
-                  <p className="text-cyan-400 text-sm mt-1 font-medium">
+                  <p className="text-blue-400 text-sm mt-1 font-medium">
                     {edu.institution}
                   </p>
                   {edu.highlight && (
@@ -185,7 +155,7 @@ const Education = () => {
                   )}
                 </div>
 
-                <div className="text-xs font-semibold text-gray-200 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-xl w-fit whitespace-nowrap self-start sm:self-center font-mono">
+                <div className="text-xs font-semibold text-gray-200 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-xl w-fit whitespace-nowrap self-start sm:self-center">
                   {edu.period}
                 </div>
               </motion.div>
@@ -214,7 +184,7 @@ const Education = () => {
               {certifications.map((cert) => (
                 <div key={cert.title} className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition">
                   <h4 className="text-sm font-bold text-white">{cert.title}</h4>
-                  <p className="text-xs text-cyan-400 mt-1 font-medium">{cert.issuer}</p>
+                  <p className="text-xs text-blue-400 mt-1 font-medium">{cert.issuer}</p>
                   <p className="text-xs text-gray-400 mt-2 leading-relaxed">{cert.description}</p>
 
                   <div className="flex flex-wrap items-center gap-2 mt-3 pt-2 border-t border-white/5">
@@ -234,7 +204,7 @@ const Education = () => {
                         href={cert.paperUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-cyan-300 bg-cyan-500/15 border border-cyan-500/30 px-3 py-1 rounded-lg hover:bg-cyan-500/25 transition"
+                        className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-blue-300 bg-blue-500/15 border border-blue-500/30 px-3 py-1 rounded-lg hover:bg-blue-500/25 transition"
                       >
                         <FaExternalLinkAlt size={10} />
                         <span>IJSREM Link</span>
